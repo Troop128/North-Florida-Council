@@ -526,8 +526,17 @@
      </div>
     </div>
    </header><!-- Navigation -->
-   <nav class="nav">
-    <div class="nav-buttons"><button class="nav-btn active" onclick="showPage('home')">Home</button> <button class="nav-btn" onclick="showPage('camping')">Camping</button> <button class="nav-btn" onclick="showPage('meetings')">Meetings</button> <button class="nav-btn" onclick="showPage('location')">Location</button> <button class="nav-btn" onclick="showPage('links')">Links</button>
+   
+<nav class="nav">
+  <div class="nav-buttons">
+    <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
+    <button class="nav-btn" onclick="showPage('camping', this)">Camping</button>
+    <button class="nav-btn" onclick="showPage('meetings', this)">Meetings</button>
+    <button class="nav-btn" onclick="showPage('location', this)">Location</button>
+    <button class="nav-btn" onclick="showPage('links', this)">Links</button>
+  </div>
+</nav>
+
     </div>
    </nav><!-- Main Content -->
    <main class="main-content"><!-- Home Page -->
@@ -692,8 +701,8 @@
         SITE
        </div>
        <h3>Local Council</h3>
-       <p>Visit our local council website for area events, camps, training opportunities, and council-specific information.</p><a href="https:/https:/www.nfcscouting.org/" target="_blank" rel="noopener noreferrer" class="link-btn">Find Council</a>
-      </div>
+       <p>Visit our local council website for area events, camps, training opportunities, and council-specific information.</p><a href="https://www.nfcscouting.org/" target="_blank">Find Council</a>
+
       <div class="link-card">
        <div class="link-logo" style="background: #fd7e14; color: white;">
         TRAINING<br>
@@ -941,21 +950,22 @@
       generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
     }
 
-    function showPage(pageId) {
-      // Hide all pages
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.classList.remove('active'));
-      
-      // Remove active class from all nav buttons
-      const navBtns = document.querySelectorAll('.nav-btn');
-      navBtns.forEach(btn => btn.classList.remove('active'));
-      
-      // Show selected page
-      document.getElementById(pageId).classList.add('active');
-      
-      // Add active class to clicked nav button
-      event.target.classList.add('active');
-    }
+    function showPage(pageId, btn) {
+  // Hide all pages
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(page => page.classList.remove('active'));
+
+  // Remove active class from all nav buttons
+  const navBtns = document.querySelectorAll('.nav-btn');
+  navBtns.forEach(b => b.classList.remove('active'));
+
+  // Show selected page
+  document.getElementById(pageId).classList.add('active');
+
+  // Add active class to clicked nav button
+  btn.classList.add('active');
+}
+
 
     async function onConfigChange(config) {
       const troopNameElement = document.getElementById('troop-name');
